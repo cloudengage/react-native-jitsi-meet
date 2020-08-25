@@ -70,21 +70,21 @@ public class RNJitsiMeetViewManager extends SimpleViewManager<RNJitsiMeetView> i
                 event);
     }
 
-    public void participantJoined(Map<String, Object> data) {
+    public void onParticipantJoined(Map<String, Object> data) {
         WritableMap event = Arguments.createMap();
         event.putString("url", (String) data.get("url"));
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 mJitsiMeetViewReference.getJitsiMeetView().getId(),
-                "conferenceWillJoin",
+                "participantJoined",
                 event);
     }
 
-    public void participantLeft(Map<String, Object> data) {
+    public void onPrticipantLeft(Map<String, Object> data) {
         WritableMap event = Arguments.createMap();
         event.putString("url", (String) data.get("url"));
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 mJitsiMeetViewReference.getJitsiMeetView().getId(),
-                "conferenceWillJoin",
+                "participantLeft",
                 event);
     }
 
@@ -95,8 +95,8 @@ public class RNJitsiMeetViewManager extends SimpleViewManager<RNJitsiMeetView> i
                 .put("conferenceJoined", MapBuilder.of("phasedRegistrationNames", MapBuilder.of("bubbled", "onConferenceJoined")))
                 .put("conferenceTerminated", MapBuilder.of("phasedRegistrationNames", MapBuilder.of("bubbled", "onConferenceTerminated")))
                 .put("conferenceWillJoin", MapBuilder.of("phasedRegistrationNames", MapBuilder.of("bubbled", "onConferenceWillJoin")))
-                .put("participantJoined", MapBuilder.of("phasedRegistrationNames", MapBuilder.of("bubbled", "participantJoined")))
-                .put("participantLeft", MapBuilder.of("phasedRegistrationNames", MapBuilder.of("bubbled", "participantLeft")))
+                .put("participantJoined", MapBuilder.of("phasedRegistrationNames", MapBuilder.of("bubbled", "onParticipantJoined")))
+                .put("participantLeft", MapBuilder.of("phasedRegistrationNames", MapBuilder.of("bubbled", "onParticipantLeft")))
                 .build();
     }
 }
