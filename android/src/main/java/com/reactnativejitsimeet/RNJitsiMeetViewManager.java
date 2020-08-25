@@ -79,7 +79,7 @@ public class RNJitsiMeetViewManager extends SimpleViewManager<RNJitsiMeetView> i
                 event);
     }
 
-    public void onPrticipantLeft(Map<String, Object> data) {
+    public void onParticipantLeft(Map<String, Object> data) {
         WritableMap event = Arguments.createMap();
         event.putString("url", (String) data.get("url"));
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
