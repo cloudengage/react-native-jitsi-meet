@@ -132,7 +132,7 @@ RCT_EXPORT_METHOD(endCall)
 }
 
 - (void)participantLeft:(NSDictionary *)data {
-    RCTLogInfo(@"Participant joined");
+    RCTLogInfo(@"Participant left");
     if (!jitsiMeetView.onParticipantLeft) {
         return;
     }
